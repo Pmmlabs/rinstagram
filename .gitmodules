@@ -1,0 +1,3 @@
+[submodule "dash-proxy"]
+	path = dash-proxy
+	url = https://github.com/Pmmlabs/dash-proxy.git
