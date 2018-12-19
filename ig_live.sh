@@ -10,6 +10,6 @@ ids=$(cat $LIVE | $JQ -r '.broadcasts|.[]|.id')
 for id in $ids
 do
     if [ ! -d "$id" ]; then
-        ./dash-proxy/dashproxy.py --disable-formatter -o $id $(cat $LIVE | $JQ -r ".broadcasts|.[]| select(.id == $id)|[.dash_abr_playback_url,.dash_playback_url,.dash_live_predictive_playback_url]|.[0]") > $id.log 2>&1 &
+        ./dash-proxy/dashproxy.py --disable-formatter -o $id $(cat $LIVE | $JQ -r ".broadcasts|.[]| select(.id == $id)|.dash_abr_playback_url // .dash_playback_url // .dash_live_predictive_playback_url") > $id.log 2>&1 &
     fi
 done
